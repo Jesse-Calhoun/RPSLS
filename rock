@@ -1,0 +1,8 @@
+class Rock:
+    def __init__(self) -> None:
+        self.name = "Rock"
+        
+
+
+# Rock crushes Scissors
+# Rock crushes Lizard
