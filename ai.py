@@ -1,18 +1,19 @@
 from time import sleep
 import random
+from contestant import Contestant
 
-class Ai:
+class Ai(Contestant):
     def __init__(self, name:str):
-        self.choosen_gesture = 5
+        super().__init__()
         self.name = name
         self.score = 0
 
     def choose_geture(self):
         gestures = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
-        self.choosen_gesture = str(random.randint(0, 4))
+        self.chosen_gesture = str(random.randint(0, 4))
         print()
         sleep(1)
-        print(f'{self.name} has chosen {gestures[int(self.choosen_gesture)]}')
+        print(f'{self.name} has chosen {gestures[int(self.chosen_gesture)]}')
         print()
         
 # ai = Ai("Jesse", 5)
