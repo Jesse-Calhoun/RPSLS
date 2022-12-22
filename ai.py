@@ -8,12 +8,13 @@ class Ai(Contestant):
         self.name = name
         self.score = 0
 
-    def choose_geture(self):
+    def choose_gesture(self):
         gestures = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
         self.chosen_gesture = str(random.randint(0, 4))
         print()
         sleep(1)
-        print(f'{self.name} has chosen {gestures[int(self.chosen_gesture)]}')
+        self.chosen_gesture = gestures[int(self.chosen_gesture)]
+        print(f'{self.name} has chosen {self.chosen_gesture}')
         print()
         
 # ai = Ai("Jesse", 5)

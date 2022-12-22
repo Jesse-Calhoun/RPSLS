@@ -12,15 +12,15 @@ class Human(Contestant):
 
     def give_name(self):
         print()
-        sleep(1)
+        #sleep(1)
         self.name = input('What is your name? ')
         print()
-        sleep(1)
+        #sleep(1)
         return self.name
 
     def choose_gesture(self):
         print()
-        sleep(1)
+        #sleep(1)
         print('''
         Choose 0 for Rock
         Choose 1 for Paper
@@ -29,17 +29,18 @@ class Human(Contestant):
         Choose 4 for Spock 
         ''')
         gestures = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
-        list = range(0, len(gestures)-1)
-        
-        while True: #  if is failing us!!
-            self.chosen_gesture = int(input('What is your chosen gesture? '))
-            if  self.chosen_gesture != list:
+        self.chosen_gesture = int(input('What is your chosen gesture? '))
+        while True:
+            if  self.chosen_gesture < 0 or self.chosen_gesture > 4:
                 print("Wrong input!")
-                continue
+                self.chosen_gesture = int(input('Please pick new gesture. '))
+            else:
+                print(gestures[self.chosen_gesture])
+                break
         
 
     
 
-human = Human()
-human.give_name()
-human.choose_gesture()
+# human = Human()
+# human.give_name()
+# human.choose_gesture()
