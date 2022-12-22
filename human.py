@@ -36,6 +36,7 @@ class Human(Contestant):
                 self.chosen_gesture = int(input('Please pick new gesture. '))
             else:
                 print(gestures[self.chosen_gesture])
+                self.chosen_gesture = gestures[self.chosen_gesture]
                 break
         
 
