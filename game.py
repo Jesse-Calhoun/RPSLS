@@ -52,11 +52,11 @@ class Game():
             else:
                 self.winner = contestant_one
             self.winner.score += 1
-            
+            print(f"{self.winner.name} won that round, {self.winner.name}'s score is {self.winner.score}.")
 
     def display_winner(self):
         print(f'{self.winner.name} has won the best of 3!')
         
 
-game = Game('RPSLS')
-game.run_game()
+# game = Game('RPSLS')
+# game.run_game()
