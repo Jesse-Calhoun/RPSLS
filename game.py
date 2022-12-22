@@ -27,50 +27,36 @@ class Game():
         contestant_one = Human()
         contestant_two = Ai('Joe')
         contestant_one.give_name()
-        contestant_one.choose_gesture()
-        contestant_two.choose_gesture()
-        if contestant_one.chosen_gesture == contestant_two.chosen_gesture:
-            return self.battle_phase()
-        elif contestant_one.chosen_gesture == 'Rock': 
-            if contestant_two.chosen_gesture == 'Spock' or contestant_two.chosen_gesture == 'Paper':
-                self.winner = contestant_two.name
-                return self.winner
-        elif contestant_one.chosen_gesture == 'Paper':
-            if contestant_two.chosen_gesture == 'Scissors' or contestant_two.chosen_gesture == 'Lizard':
-                self.winner = contestant_two.name
-                return self.winner
-        elif contestant_one.chosen_gesture == 'Scissors':
-            if contestant_two.chosen_gesture == 'Rock' or contestant_two.chosen_gesture == 'Spock':
-                self.winner = contestant_two.name
-                return self.winner
+        while contestant_one.score < 2 and contestant_two.score < 2:
+            contestant_one.choose_gesture()
+            contestant_two.choose_gesture()
+            if contestant_one.chosen_gesture == contestant_two.chosen_gesture:
+                return self.battle_phase()
+            elif contestant_one.chosen_gesture == 'Rock': 
+                if contestant_two.chosen_gesture == 'Spock' or contestant_two.chosen_gesture == 'Paper':
+                    self.winner = contestant_two
+            elif contestant_one.chosen_gesture == 'Paper':
+                if contestant_two.chosen_gesture == 'Scissors' or contestant_two.chosen_gesture == 'Lizard':
+                    self.winner = contestant_two
+            elif contestant_one.chosen_gesture == 'Scissors':
+                if contestant_two.chosen_gesture == 'Rock' or contestant_two.chosen_gesture == 'Spock':
+                    self.winner = contestant_two
+                else:
+                    self.winner = contestant_one
+            elif contestant_one.chosen_gesture == 'Lizard':
+                if contestant_two.chosen_gesture == 'Rock' or contestant_two.chosen_gesture == 'Scissors':
+                    self.winner = contestant_two
+            elif contestant_one.chosen_gesture == 'Spock':
+                if contestant_two.chosen_gesture == 'Lizard' or contestant_two.chosen_gesture == 'Paper':
+                    self.winner = contestant_two
             else:
-                self.winner = contestant_one.name
-                return self.winner
-
-        elif contestant_one.chosen_gesture == 'Lizard':
-            if contestant_two.chosen_gesture == 'Rock' or contestant_two.chosen_gesture == 'Scissors':
-                self.winner = contestant_two.name
-                return self.winner
-        elif contestant_one.chosen_gesture == 'Spock':
-            if contestant_two.chosen_gesture == 'Lizard' or contestant_two.chosen_gesture == 'Paper':
-                self.winner = contestant_two.name
-                return self.winner
-        else:
-            self.winner = contestant_one.name
-            return self.winner
-        #not getting winner to print.
-        print(self.winner)
-        
-        
-
-        # print(contestant_two.chosen_gesture)
-        # print(contestant_one.name)
-        # winner = 
-        
+                self.winner = contestant_one
+            self.winner.score += 1
+            
 
     def display_winner(self):
-        pass
+        print(f'{self.winner.name} has won the best of 3!')
+        
 
 game = Game('RPSLS')
-game.display_welcome()
-game.battle_phase()
+game.run_game()
