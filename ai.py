@@ -10,10 +10,10 @@ class Ai(Contestant):
 
     def choose_gesture(self):
         gestures = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
-        self.chosen_gesture = str(random.randint(0, 4))
+        self.chosen_gesture = random.choice(gestures)
         print()
         # sleep(1)
-        self.chosen_gesture = gestures[int(self.chosen_gesture)]
+        #self.chosen_gesture = gestures[int(self.chosen_gesture)]
         print(f'{self.name} has chosen {self.chosen_gesture}')
         print()
         

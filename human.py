@@ -29,13 +29,13 @@ class Human(Contestant):
         Choose 4 for Spock 
         ''')
         gestures = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
-        self.chosen_gesture = int(input('What is your chosen gesture? '))
+        self.chosen_gesture = int(input(f'{self.name} what is your chosen gesture? '))
         while True:
             if  self.chosen_gesture < 0 or self.chosen_gesture > 4:
                 print("Wrong input!")
                 self.chosen_gesture = int(input('Please pick new gesture. '))
             else:
-                print(gestures[self.chosen_gesture])
+                print(f'{self.name} chose {gestures[self.chosen_gesture]}')
                 self.chosen_gesture = gestures[self.chosen_gesture]
                 break
         
