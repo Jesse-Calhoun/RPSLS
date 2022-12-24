@@ -12,15 +12,15 @@ class Human(Contestant):
 
     def give_name(self):
         print()
-        #sleep(1)
+        sleep(1)
         self.name = input('What is your name? ')
         print()
-        #sleep(1)
+        sleep(1)
         return self.name
 
     def choose_gesture(self):
         print()
-        #sleep(1)
+        sleep(1)
         print('''
         Choose 0 for Rock
         Choose 1 for Paper
@@ -42,6 +42,4 @@ class Human(Contestant):
 
     
 
-# human = Human()
-# human.give_name()
-# human.choose_gesture()
+

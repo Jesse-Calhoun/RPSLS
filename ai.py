@@ -12,10 +12,7 @@ class Ai(Contestant):
         gestures = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
         self.chosen_gesture = random.choice(gestures)
         print()
-        # sleep(1)
-        #self.chosen_gesture = gestures[int(self.chosen_gesture)]
+        sleep(1)
         print(f'{self.name} has chosen {self.chosen_gesture}')
         print()
         
-# ai = Ai("Jesse", 5)
-# ai.choose_geture()
