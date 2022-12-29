@@ -17,8 +17,12 @@ class Game():
     def run_game(self):
         self.display_welcome()
         self.determine_game_type()
-        self.battle_phase()
-        self.display_winner()
+        while self.contestant_one.score < 2 and self.contestant_two.score < 2:
+            print(f'Round: {self.current_round}')
+            self.choose_gestures()
+            self.compare_gestures()
+            self.display_round_winner()
+        self.display_game_winner()
         pass
 
     def display_welcome(self):
@@ -66,16 +70,21 @@ class Game():
                 print(' ')        
                 break 
             else: 
-                print('Wrong input!')
+                print('Wrong input! Please select 1 for single player or 2 for multiplayer.')
                 response = input(f'Player 1 {self.contestant_one.name}, what game type would you like? Pick 1 for Single player, pick 2 for multiplayer. ')
 
-    def battle_phase(self):
-        while self.contestant_one.score < 2 and self.contestant_two.score < 2:
-            print(f'Round: {self.current_round}')
+    def choose_gestures(self):
+
             self.contestant_one.choose_gesture()
+            self.contestant_one.display_chosen_gesture()
             self.contestant_two.choose_gesture()
+            self.contestant_two.display_chosen_gesture()
+            
+    def compare_gestures(self):
             if self.contestant_one.chosen_gesture == self.contestant_two.chosen_gesture:
-                return self.battle_phase()
+                print(f'Round: {self.current_round}')
+                self.choose_gestures()
+                return self.compare_gestures()
             elif self.contestant_one.chosen_gesture == 'Rock': 
                 if self.contestant_two.chosen_gesture == 'Spock' or self.contestant_two.chosen_gesture == 'Paper':
                     self.winner = self.contestant_two
@@ -112,10 +121,13 @@ class Game():
                     self.winner = self.contestant_one
                     self.current_round += 1
             self.winner.score += 1
-            sleep(1)
-            print(f"{self.winner.name} won that round, {self.winner.name}'s score is {self.winner.score}.")
+            
+            
+    def display_round_winner(self):
+        sleep(1)
+        print(f"{self.winner.name} won that round, {self.winner.name}'s score is {self.winner.score}.")
 
-    def display_winner(self):
+    def display_game_winner(self):
         sleep(1)
         print(f'{self.winner.name} has won the best of 3!')
         sleep(1)
