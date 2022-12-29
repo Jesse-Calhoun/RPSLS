@@ -23,46 +23,51 @@ class Game():
 
     def display_welcome(self):
         print(' ')
-        sleep(1)
+        #sleep(1)
         print(f'Welcome to {self.name}.')
-        sleep(1)
+        #sleep(1)
         print('Explanation of game rules:')
-        sleep(1)
+        #sleep(1)
         print('Rock crushes Scissors')
-        sleep(1)
+        #sleep(1)
         print('Scissors cuts Paper')
-        sleep(1)
+        #sleep(1)
         print('Paper covers Rock')
-        sleep(1)
+        #sleep(1)
         print('Rock crushes Lizard')
-        sleep(1)
+        #sleep(1)
         print('Lizard poisons Spock')
-        sleep(1)
+        #sleep(1)
         print('Spock smashes Scissors')
-        sleep(1)
+        #sleep(1)
         print('Scissors decapitates Lizard')
-        sleep(1)
+        #sleep(1)
         print('Lizard eats Paper')
-        sleep(1)
+        #sleep(1)
         print('Paper disproves Spock')
-        sleep(1)
+        #sleep(1)
         print('Spock vaporizes Rock')
-        sleep(1)
+        #sleep(1)
         print(' ')
     
     def determine_game_type(self):
         self.contestant_one.give_name()
         response = input(f'Player 1 {self.contestant_one.name}, what game type would you like? Pick 1 for Single player, pick 2 for multiplayer. ')
-        if response == '1':
-            self.contestant_two = self.contestant_two
-            print(f'{self.contestant_one.name} has chosen to play against {self.contestant_two.name}!')
-            print(" ")
-        else:
-            self.contestant_two = self.contestant_three
-            self.contestant_two.give_name()
-            print(f'Player 2: {self.contestant_two.name}')
-            print(' ')
-            
+        while True:
+            if response == '1':
+                self.contestant_two = self.contestant_two
+                print(f'{self.contestant_one.name} has chosen to play against {self.contestant_two.name}!')
+                print(" ")
+                break
+            elif response == '2':
+                self.contestant_two = self.contestant_three
+                self.contestant_two.give_name()
+                print(f'Player 2: {self.contestant_two.name}') 
+                print(' ')        
+                break 
+            else: 
+                print('Wrong input!')
+                response = input(f'Player 1 {self.contestant_one.name}, what game type would you like? Pick 1 for Single player, pick 2 for multiplayer. ')
 
     def battle_phase(self):
         while self.contestant_one.score < 2 and self.contestant_two.score < 2:
